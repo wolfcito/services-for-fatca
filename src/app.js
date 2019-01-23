@@ -38,7 +38,7 @@ app.get('/api/alumnos', async function (req, res) {
     await AlumnoService.buscar()
     .then( alumnosEncontrados =>{
         console.log(alumnosEncontrados);
-        res.send(alumnosEncontrados);
+        res.status(200).send(alumnosEncontrados);
     })
     .catch( error =>{
         console.log(error);
