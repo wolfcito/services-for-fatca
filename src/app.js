@@ -102,12 +102,13 @@ app.put('/api/asginarDireccion/:ci', async function(req, res){
 })
 
 app.put('/api/agregarTelefono/:ci', async function(req, res){
+    console.log("telefono ",req.body.telefono)
     await AlumnoService.agregarTelefonoByCI(req.params.ci, req.body.telefono)
     .then( result => { res.send(result)})
     .catch( error => { res.send(error) });
 })
 
-app.put('/api/eliminarTelefono/:ci', async function(req, res){
+app.delete('/api/eliminarTelefono/:ci', async function(req, res){
     console.log(req.body.telefono)
     await AlumnoService.eliminarTelefonoByCI(req.params.ci, req.body.telefono)
     .then( result => { res.send(result)})

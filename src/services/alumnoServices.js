@@ -48,14 +48,13 @@ async function asignaDireccionByCI(_cedula, _direccion){
 }
 
 async function agregarTelefonoByCI(_cedula, _telefono){
-    return await Alumno.findOneAndUpdate({ cedula: _cedula }, { $push: {telefono: _telefono}},function(err){
+    return await Alumno.findOneAndUpdate({ cedula: _cedula }, { $push: {telefono: _telefono}},{safe: true, upsert: true},function(err, telefono){
         if (err) return err;
     });   
 }
 
 async function eliminarTelefonoByCI(_cedula, _telefono){
-    return await Alumno.findOneAndUpdate({ cedula: _cedula }, { $pull: {telefono: _telefono}},function(err){
-    //.updateOne({ cedula: _cedula }, { $pull: {telefono: _telefono}},function(err){
+    return await Alumno.findOneAndUpdate({ cedula: _cedula }, { $pull: {telefono: {numero: _telefono}}},{safe: true, upsert: true},function(err){
         if (err) return err;
     });   
 }

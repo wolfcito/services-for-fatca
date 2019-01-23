@@ -9,8 +9,8 @@ var Alumno = new Schema({
     edad: Number,
     estatura: Number,
     fechaNacimiento: Date,
-    direccion: { calle1: String, calle2: String },
-    telefono:[String]
+    direccion: { calle: String, numero: String, interseccion:String },
+    telefono:[{_id: false, numero:String, descripcion:String}]
 });
 
 module.exports = mongoose.model('Alumno', Alumno);
